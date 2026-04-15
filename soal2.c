@@ -11,26 +11,25 @@
 
 #include <stdio.h> 
 
-void batu_stabil(int hasil, int langkah, int n){
+void batu_stabil(int langkah, int n){
+    int hasil;
     if(n % 2 == 0){
         hasil = n/2;
         langkah++;
         n = hasil;
-        if (hasil == 1) {
-            printf("LANGKAH : %d", langkah);
-            return;
-        }
 
-    } else if (n % 2 == 1){
+    } else if (n % 2 != 0){
         hasil = (3*n) + 1;
         langkah++;
         n = hasil;
-        if (hasil == 1){
-            printf("LANGKAH : %d", langkah);
-            return;
-        }
     }
-    batu_stabil(hasil, langkah, n);
+    if (hasil == 1) {
+        printf("LANGKAH : %d\n", langkah);
+        return;
+    } else {
+            batu_stabil(langkah, n);
+    }
+        
 }
     
 int main(){
@@ -41,9 +40,7 @@ int main(){
 
     int n;
     int array[T]; 
-    int hasil = 0; 
     int langkah = 0; 
-    int LANGKAH = 0;
 
     //Perulangan untuk input tiap elemen dalam array 
     for(int i = 0; i < T; i++){
@@ -52,7 +49,7 @@ int main(){
     }
 
     for(int i = 0; i < T; i++){
-        batu_stabil(hasil, langkah, array[i]);
+        batu_stabil(langkah, array[i]);
     }
 
     return 0; 
