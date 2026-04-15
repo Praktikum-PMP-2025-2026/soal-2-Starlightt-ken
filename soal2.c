@@ -43,7 +43,7 @@ int main(){
     }
 
     for(int i = 0; i < T; i++){
-        printf("LANGKAH : %d", batu_stabil(0, array[i]));
+        printf("LANGKAH %d\n", batu_stabil(0, array[i]));
     }
 
     return 0; 
